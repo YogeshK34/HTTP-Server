@@ -18,8 +18,3 @@ app.get('/backend-api/conversation', function (req, res) {
   res.send(`Received GET request with name: ${name}, email: ${email}`);
 });
 
-
-// Start the server
-app.listen(port, function () {
-    console.log(`Server running on port ${port}`);
-});
