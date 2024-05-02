@@ -2,41 +2,24 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+// Middleware to parse JSON bodies
 app.use(express.json());
 
-app.get('/', function (req, res) {
-  res.send('<h1>Hello World!</h1>');
+// Route to handle POST requests
+app.post('/submit', function (req, res) {
+    const name = req.body.name;
+    const email = req.body.email;
+    res.send(`Received POST request with name: ${name}, email: ${email}`);
 });
 
-app.post('/backend-api/conversation', function (req, res) {
-  const message = req.body.message;
-  console.log(message);
-  res.json({
-    output: "2 = 2 = 4"
-  });
+app.get('/backend-api/conversation', function (req, res) {
+  const name = req.query.name;
+  const email = req.query.email;
+  res.send(`Received GET request with name: ${name}, email: ${email}`);
 });
 
-// PUT method
-app.put('/backend-api/conversation/:id', function (req, res) {
-  const id = req.params.id;
-  // Update conversation with id = id
-  res.send(`Conversation ${id} updated`);
-});
 
-// DELETE method
-app.delete('/backend-api/conversation/:id', function (req, res) {
-  const id = req.params.id;
-  // Delete conversation with id = id
-  res.send(`Conversation ${id} deleted`);
-});
-
-// PATCH method
-app.patch('/backend-api/conversation/:id', function (req, res) {
-  const id = req.params.id;
-  // Update partial information of conversation with id = id
-  res.send(`Partial update for conversation ${id}`);
-});
-
+// Start the server
 app.listen(port, function () {
-  console.log(`Example app listening on port ${port}`);
+    console.log(`Server running on port ${port}`);
 });
