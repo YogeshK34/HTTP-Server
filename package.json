@@ -10,8 +10,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "array": "^0.4.3",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
+    "grep": "^0.1.0",
     "nodemon": "^3.1.0"
   }
 }
